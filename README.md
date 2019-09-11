@@ -1,3 +1,3 @@
-# softdev
+# Software Development
 
-testing changes part 2!!
+Where the magic happens. 
