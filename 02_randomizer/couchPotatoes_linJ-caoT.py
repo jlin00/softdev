@@ -17,5 +17,5 @@ def randomName():
     print(random.choice(KREWES[period])) #prints a random index from chosen team
 
 #tests
-#for i in range(0, 10):
-#    randomName()
+for i in range(0, 10):
+    randomName()
