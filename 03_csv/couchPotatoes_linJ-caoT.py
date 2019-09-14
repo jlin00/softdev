@@ -18,3 +18,11 @@ for line in content:
 file.close()
 
 def randJob():
+    list = []
+    for key, value in dict.items(): #found this iteration on stack overflow
+        list += [key] * int(value * 10) #big thanks to Grace for this alternative to a forward loop
+    #print(list)
+    #print(len(list)) #should return 998
+    return random.choice(list)
+
+#print(randJob())
