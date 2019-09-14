@@ -1,3 +1,5 @@
+import random
+
 #create dictionary based on csv
 dict = {} #initialize a new dictionary structure
 file = open("occupations.csv", "r") #open up csv file for reading purposes
@@ -14,3 +16,5 @@ for line in content:
     dict[line[0]] = float(line[1]) #key value pair
 #print(dict) #testing results
 file.close()
+
+def randJob():
