@@ -10,5 +10,7 @@ for line in content:
         line = line.split("\",") #splits line by ",
     else:
         line = line.split(",") #if line does not contain quotes, split by comma
-    print(line)
+
+    dict[line[0]] = float(line[1]) #key value pair
+#print(dict) #testing results
 file.close()
