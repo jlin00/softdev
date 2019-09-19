@@ -1,3 +1,8 @@
+#Jackie Lin
+#SoftDev1 pd1
+#K06: StI/O: Divine your Destiny!
+#2019-09-17
+
 import random
 
 #create dictionary based on csv

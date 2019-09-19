@@ -1,3 +1,8 @@
+#Jackie Lin
+#SoftDev1 pd1
+#K02 -- NO-body expects the Spanish Inquisition!
+#2019-09-11
+
 import random
 
 KREWES = {
