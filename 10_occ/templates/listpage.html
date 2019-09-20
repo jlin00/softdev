@@ -1,0 +1,26 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<h3 style="color:#ff0300">Your random job: {{ rand_job }}</h3><br>
+    <table>
+        <thead>
+        <tr>
+            <td>Job Class</td>
+            <td>Percentage</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for jb, pr in jobs %}
+            <tr>
+                <td>
+                    {{ jb }}
+                </td>
+                <td>
+                    {{ pr }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock content %}
