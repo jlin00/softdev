@@ -15,11 +15,11 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/occupyflaskst')
+@app.route('/occupyflaskst') #returns html page with table of occupations
 def occupyflaskst():
     job_dict = dict()
 
-    with open('static/occupations.csv') as file:
+    with open('static/occupations.csv') as file: #see comments in csvreader.py file
         next(file)
         reader = csv.reader(file)
         for row in reader:
@@ -31,7 +31,7 @@ def occupyflaskst():
     return render_template('listpage.html',
                            jobs=job_dict.items(),
                            rand_job=random_sel(),
-                           title='Occupations')
+                           title='Occupations') #passes in dictionary and randomly-selected occupations 
 
 
 if __name__ == '__main__':

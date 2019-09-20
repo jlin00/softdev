@@ -1,7 +1,7 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<h3 style="color:#ff0300">Your random job: {{ rand_job }}</h3><br>
+<h3 style="color:#ff0300">Your random job: {{ rand_job }}</h3><br> <!-- placeholder for random job -->
     <table>
         <thead>
         <tr>
@@ -10,7 +10,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for jb, pr in jobs %}
+        {% for jb, pr in jobs %} <!-- forward loop that lists jobs and percentages in a table  -->
             <tr>
                 <td>
                     {{ jb }}
