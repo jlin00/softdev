@@ -23,12 +23,16 @@ def occupyflaskst():
         next(file)  # skips first line
         reader = csv.reader(file)  # from imports
         for row in reader:
-            job_dict[row[0]] = (float(row[1]), (row[2]))  # key is title and value is percentage
+            job_dict[row[0]] = (float(row[1]), (row[2]))  # key is title and value is a tuple consisting of percentage and links
     del job_dict['Total']  # remove last line
 
-    # shorthand for a function that uses the built-in choices method to randomly select a key
-    # the choices are the dictionary keys and the weights are the values of the key
-    # k = 1 selects on item and returns the name
+    # lambda is shorthand for a function, lets you write fxn on one line
+    # uses random.choices method, which takes values from a list as parameter 1 and weights as parameter 2 and chooses a random one
+    # for loop just says for every entry in the dictionary, extract this value
+    # the population/given list is taking from each entry the name of the occupation, i, and the link, which is the second index of the tuple
+    # the weight is taking from each entry the first index of the tuple where percentage is stored)
+    # k = 1 selects one item
+    # function returns the name and link of the occupation in the form of ANOTHER tuple
     random_sel = lambda: random.choices(population=[(i, job_dict[i][1]) for i in list(job_dict.keys())],
                                         weights=[i[0] for i in list(job_dict.values())], k=1)[0]
 

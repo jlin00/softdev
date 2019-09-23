@@ -1,6 +1,8 @@
 {% extends "_base.html" %}
 
 {% block content %}
+    {# the tuple retuned by the lambda fxn in app.py is being used here #}
+    {# the name of the occupation is being made into a link #}
     <h3 style="color:#ff0300">Your random job: <a href="{{ rand_job[1] }}">{{ rand_job[0] }}</a></h3><br>
     <table>
         <thead>
