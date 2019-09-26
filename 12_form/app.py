@@ -21,12 +21,21 @@ def index():
 
 @app.route('/auth')
 def submission():
+    '''
+    print("REQUEST")
     print(request)
+    print("ARGS")
+    print(request.args)
+    print("NAME")
+    print(request.args['name'])
+    print("HEADERS")
+    '''
+    print(request.headers)
     return render_template('response.html',
                             name=request.args['name'],
                             request=request.method,
                             age=request.args['age'])
-    #return (request.args)['name'] + "\'s brain is " + (request.args)['age'] + " Years Old!"
+    #return (request.args)['name']) print( "\'s brain is ") print( (request.args)['age']) print( " Years Old!"
 
 
 if __name__ == '__main__':
