@@ -16,7 +16,7 @@ password = '123'
 
 @app.route("/")
 def root():
-    if ("username" in session): #if username key exists in session, return welcome page
+    if ("user" in session): #if username key exists in session, return welcome page
         return redirect("/welcome")
     else:
         return redirect("/login") #if user is not logged in, redirect to login form
