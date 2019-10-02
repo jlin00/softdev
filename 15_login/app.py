@@ -7,18 +7,18 @@ from flask import Flask, render_template, session, url_for, request
 
 app = Flask(__name__)
 
+#hard-coded credentials
+username = 'guest'
+password = '123'
 
 @app.route("/")
-def form():
+def root():
     #session['username'] = request.args['username']
-    print(request.args['username'])
-    return render_template("form.html",
-                            username = request.args['username'],
-                            password = request.args['password'])
+    return "root page"
 
 @app.route("/auth")
 def auth():
-    return render_template("response.html")
+    return "auth page"
 
 if __name__ == "__main__":
     app.debug = True
