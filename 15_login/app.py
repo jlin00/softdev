@@ -16,7 +16,6 @@ password = '123'
 
 @app.route("/")
 def root():
-    #session['username'] = request.args['username']
     if ("username" in session): #if username key exists in session, return welcome page
         return redirect("/welcome")
     else:
@@ -24,16 +23,22 @@ def root():
 
 @app.route("/auth")
 def auth():
-    return "auth page"
+    if (username == request.args['username']): #takes in username from form data
+        if (password == request.args['password']): #same thing, but with pswd
+            session['user'] = username
+        else:
+            return render_template("error.html", msg="bad password")
+    else:
+        return render_template("error.html", msg="bad username")
 
 @app.route("/welcome")
 def welcome():
     if ("username" in session): #passes in username from session
-        username = session['username']
+        user = session['user']
     else: #if user is not logged in and navigates to welcome page manually
-        username = "None"
+        user = "None"
     return render_template("welcome.html",
-                            username = username)
+                            user = user)
 
 @app.route("/login")
 def login():
