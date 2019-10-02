@@ -5,7 +5,10 @@
   </head>
   <body>
     <p>
-      Welcome {{ username }}! Thanks for logging in!
+      Welcome {{ user }}! Thanks for logging in!
     </p>
+    <form action="/logout">
+      <input type="submit" name="logout" value="Logout">
+    </form>
   </body>
 </html>

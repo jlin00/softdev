@@ -26,6 +26,7 @@ def auth():
     if (username == request.args['username']): #takes in username from form data
         if (password == request.args['password']): #same thing, but with pswd
             session['user'] = username
+            return redirect("/welcome")
         else:
             return render_template("error.html", msg="bad password")
     else:
@@ -33,16 +34,22 @@ def auth():
 
 @app.route("/welcome")
 def welcome():
-    if ("username" in session): #passes in username from session
-        user = session['user']
+    if ("user" in session): #passes in username from session
+        name = session['user']
     else: #if user is not logged in and navigates to welcome page manually
-        user = "None"
+        name = "None"
     return render_template("welcome.html",
-                            user = user)
+                            user = name)
 
 @app.route("/login")
 def login():
     return render_template("form.html")
+
+@app.route("/logout")
+def logout():
+    if ("user" in session):
+        session.pop('user') #remove user from session
+    return redirect("/") #return to home page
 
 if __name__ == "__main__":
     app.debug = True
