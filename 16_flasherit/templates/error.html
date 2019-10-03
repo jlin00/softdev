@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title> Error </title>
-  </head>
-  <body>
-    <p>
-      Error: {{ msg }}
-    </p>
-  </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+Error
+{% endblock %}
+
+{% block body %}
+<p>
+  Error: {{ msg }}
+</p>
+{% endblock %}
