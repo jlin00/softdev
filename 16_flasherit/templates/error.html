@@ -5,7 +5,10 @@ Error
 {% endblock %}
 
 {% block content %}
-<p>
-  Error: {{ msg }}
+<p style="color:red">
+  {% set msgs = get_flashed_messages() %}
+  {% for msg in msgs %}
+    {{ msg }}
+  {% endfor %}
 </p>
 {% endblock %}
