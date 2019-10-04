@@ -30,10 +30,10 @@ def auth():
             return redirect(url_for('welcome')) #go to welcome page
         else:
             flash("Bad Password")
-            return render_template("error.html") #wrong password
+            return redirect(url_for('login'))
     else:
         flash("Bad Username")
-        return render_template("error.html") #wrong username
+        return redirect(url_for('login'))
 
 @app.route("/welcome")
 def welcome():
@@ -51,6 +51,7 @@ def login():
 def logout():
     if ("user" in session):
         session.pop('user') #remove user from session
+        flash("You were successfully logged out.")
     return redirect(url_for('root')) #return to home page
 
 if __name__ == "__main__":

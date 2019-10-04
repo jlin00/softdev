@@ -5,16 +5,18 @@ Welcome!
 {% endblock %}
 
 {% block content %}
+<p>
+  Welcome {{ user }}! Thanks for logging in!
+</p>
+
+<form action="/logout">
+  <input type="submit" name="logout" value="Logout">
+</form>
+
 <p style="color:red">
   {% set msgs = get_flashed_messages() %}
   {% for msg in msgs %}
     {{ msg }}
   {% endfor %}
 </p>
-<p>
-  Welcome {{ user }}! Thanks for logging in!
-</p>
-<form action="/logout">
-  <input type="submit" name="logout" value="Logout">
-</form>
 {% endblock %}
