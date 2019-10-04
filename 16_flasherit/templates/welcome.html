@@ -12,11 +12,4 @@ Welcome!
 <form action="/logout">
   <input type="submit" name="logout" value="Logout">
 </form>
-
-<p style="color:red">
-  {% set msgs = get_flashed_messages() %}
-  {% for msg in msgs %}
-    {{ msg }}
-  {% endfor %}
-</p>
 {% endblock %}

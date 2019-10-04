@@ -10,6 +10,13 @@
   {% block content %}
   {% endblock %}
 
+  <p style="color:red">
+    {% set msgs = get_flashed_messages() %}
+    {% for msg in msgs %}
+      {{ msg }}
+    {% endfor %}
+  </p>
+
   {% block footer %}
     <p>
       &copy; Copyright 2019 by Michael and Jackie
