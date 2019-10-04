@@ -38,10 +38,10 @@ def auth():
 @app.route("/welcome")
 def welcome():
     if ("user" in session): #passes in username from session
-        name = session['user']
-    else: #if user is not logged in and navigates to welcome page manually
-        name = "None"
-    return render_template("welcome.html", user = name)
+        return render_template("welcome.html", user = session['user'])
+    #if user is not logged in and navigates to welcome page manually
+    flash("Please log in first.")
+    return redirect(url_for('login'))
 
 @app.route("/login")
 def login():
