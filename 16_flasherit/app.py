@@ -45,6 +45,8 @@ def welcome():
 
 @app.route("/login")
 def login():
+    if ("user" in session):
+        return redirect(url_for('welcome'))
     return render_template("form.html") #returns login form
 
 @app.route("/logout")
