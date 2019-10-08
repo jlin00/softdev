@@ -1,3 +1,4 @@
+#Team Innocent Potatoes
 #Jackie Lin && Kevin Li
 #SoftDev1 pd1
 #K17 -- No Trouble
@@ -5,7 +6,7 @@
 
 import sqlite3 #enable control of an sqlite database
 import csv #facilitate CSV I/O
-import pandas #for printing the db
+#import pandas #for printing the db
 
 #Must delete this every time this py file is run!
 DB_FILE = "discobandit.db"
@@ -49,9 +50,9 @@ with open('courses.csv', newline='') as courses:
 #c.execute(command)    # run SQL statement
 
 #Printing - requires pandas module
-print(pandas.read_sql_query("SELECT * from students", db))
-print('\n')
-print(pandas.read_sql_query("SELECT * from courses", db))
+#print(pandas.read_sql_query("SELECT * from students", db))
+#print('\n')
+#print(pandas.read_sql_query("SELECT * from courses", db))
 
 #==========================================================
 
