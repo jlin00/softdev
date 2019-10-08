@@ -1,37 +1,57 @@
-#Jackie Lin
-#SoftDev pd1
+#Jackie Lin && Kevin Li
+#SoftDev1 pd1
 #K17 -- No Trouble
-#2019-10-08
+#2019-10-09
 
-import sqlite3   #enable control of an sqlite database
-import csv       #facilitate CSV I/O
+import sqlite3 #enable control of an sqlite database
+import csv #facilitate CSV I/O
+import pandas #for printing the db
 
-
-DB_FILE="discobandit.db"
+#Must delete this every time this py file is run!
+DB_FILE = "discobandit.db"
 
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
 #==========================================================
+#students.csv
+c.execute(
+    """ CREATE TABLE students(
+        name TEXT NOT NULL,
+        age INT NOT NULL,
+        id INT PRIMARY KEY NOT NULL
+    ) """
+)
 
-# < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
-with open('courses.csv') as coursefile:
-    reader = csv.DictReader(coursefile) #create new dictreader object
-    c.execute("create table courses (code text, mark integer, id integer);") #create table
-    for row in reader:
-        command = "insert into courses values (\"" + row['code'] + "\", " + row['mark'] + ", " + row['id'] + ");"
-        c.execute(command)
+with open('students.csv', newline='') as students:
+    stuReader = csv.DictReader(students)
 
-with open('students.csv') as studentfile:
-    reader = csv.DictReader(studentfile) #create new dictreader object
-    c.execute("create table students (code text, mark integer, id integer);") #create table
-    for row in reader:
-        command = "insert into students values (\"" + row['name'] + "\", " + row['age'] + ", " + row['id'] + ");"
-        c.execute(command)
+    for row in stuReader:
+        #? denotes variables to be inserted
+        c.execute("INSERT INTO students VALUES(?, ?, ?)", (row['name'], row['age'], row['id']))
 
+#courses.csv
+c.execute(
+    """ CREATE TABLE courses(
+        code TEXT NOT NULL,
+        mark INT NOT NULL,
+        id INT NOT NULL
+    ) """
+)
 
-command = ""          # test SQL stmt in sqlite3 shell, save as string
-c.execute(command)    # run SQL statement
+with open('courses.csv', newline='') as courses:
+    courseReader = csv.DictReader(courses)
+
+    for row in courseReader:
+        c.execute("INSERT INTO courses VALUES(?, ?, ?)", (row['code'], row['mark'], row['id']))
+
+#command = "" # test SQL stmt in sqlite3 shell, save as string
+#c.execute(command)    # run SQL statement
+
+#Printing - requires pandas module
+print(pandas.read_sql_query("SELECT * from students", db))
+print('\n')
+print(pandas.read_sql_query("SELECT * from courses", db))
 
 #==========================================================
 
