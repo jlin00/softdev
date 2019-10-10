@@ -35,7 +35,26 @@ with open('courses.csv', newline='') as courses:
     for row in courseReader:
         c.execute("INSERT INTO courses VALUES(?, ?, ?)", (row['code'], row['mark'], row['id']))
 
-#look up student grades 
+
+#create student grades table
+c.execute(
+    "CREATE TABLE stu_avg(id INT, avg REAL)"
+)
+
+#calculate average mark after grouping results by id
+c.execute("""
+            SELECT name, students.id, avg(mark)
+            FROM students, courses
+            WHERE students.id = courses.id
+            GROUP BY students.id
+            """)
+rows = c.fetchall()
+for row in rows:
+    #print statement used to display each student's name, id, and avg
+    #print(("NAME: \"{}\" | ID: {} | AVG: {}").format(row[0], row[1], row[2]))
+    c.execute("INSERT INTO stu_avg VALUES(?, ?)", (row[1], row[2]))
+
+
 
 #==========================================================
 
