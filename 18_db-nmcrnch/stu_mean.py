@@ -54,7 +54,11 @@ for row in rows:
     #print(("NAME: \"{}\" | ID: {} | AVG: {}").format(row[0], row[1], row[2]))
     c.execute("INSERT INTO stu_avg VALUES(?, ?)", (row[1], row[2]))
 
-
+#takes inputs from users and adds to course table
+code = input("Enter course code: ")
+mark = input("Enter course mark: ")
+id = input("Enter student id: ")
+c.execute("INSERT INTO courses VALUES(?, ?, ?)", (code, mark, id))
 
 #==========================================================
 
