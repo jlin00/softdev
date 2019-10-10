@@ -35,6 +35,8 @@ with open('courses.csv', newline='') as courses:
     for row in courseReader:
         c.execute("INSERT INTO courses VALUES(?, ?, ?)", (row['code'], row['mark'], row['id']))
 
+#look up student grades 
+
 #==========================================================
 
 db.commit() #save changes
