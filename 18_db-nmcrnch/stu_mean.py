@@ -35,6 +35,13 @@ with open('courses.csv', newline='') as courses:
     for row in courseReader:
         c.execute("INSERT INTO courses VALUES(?, ?, ?)", (row['code'], row['mark'], row['id']))
 
+        
+#takes inputs from users and adds to course table
+code = input("Enter course code: ")
+mark = input("Enter course mark: ")
+id = input("Enter student id: ")
+c.execute("INSERT INTO courses VALUES(?, ?, ?)", (code, mark, id))
+
 
 #create student grades table
 c.execute(
@@ -53,12 +60,6 @@ for row in rows:
     #print statement used to display each student's name, id, and avg
     #print(("NAME: \"{}\" | ID: {} | AVG: {}").format(row[0], row[1], row[2]))
     c.execute("INSERT INTO stu_avg VALUES(?, ?)", (row[1], row[2]))
-
-#takes inputs from users and adds to course table
-code = input("Enter course code: ")
-mark = input("Enter course mark: ")
-id = input("Enter student id: ")
-c.execute("INSERT INTO courses VALUES(?, ?, ?)", (code, mark, id))
 
 #==========================================================
 
