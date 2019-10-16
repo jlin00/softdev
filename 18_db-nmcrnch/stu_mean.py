@@ -14,59 +14,75 @@ db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
 #==========================================================
-#students.csv
-c.execute(
-    "CREATE TABLE students(name TEXT NOT NULL, age INT NOT NULL, id INT PRIMARY KEY NOT NULL)"
-)
 
-with open('students.csv', newline='') as students:
-    stuReader = csv.DictReader(students)
-    for row in stuReader:
-        c.execute("INSERT INTO students VALUES(?, ?, ?)", (row['name'], row['age'], row['id']))
+def create_tbl(tbl_name, headers):
+    cmd = "CREATE TABLE {}({})".format(tbl_name, headers)
+    c.execute(cmd)
 
-#courses.csv
-c.execute(
-    "CREATE TABLE courses(code TEXT NOT NULL, mark INT NOT NULL,id INT NOT NULL)"
-)
+def insertAll(tbl_name, filename):
+    with open(filename, newline='') as file:
+        fileReader = csv.DictReader(file)
+        for row in fileReader:
+            headers = list(row.values())
+            c.execute("INSERT INTO {} VALUES('{}', {}, {})".format(tbl_name, *headers))
 
-with open('courses.csv', newline='') as courses:
-    courseReader = csv.DictReader(courses)
-
-    for row in courseReader:
-        c.execute("INSERT INTO courses VALUES(?, ?, ?)", (row['code'], row['mark'], row['id']))
-
-
-print("If you would like to stop adding courses, don't input anything and just press enter.")
-#takes inputs from users and adds to course table
-while (True):
-    code = input("Enter course code: ")
-    if code == "":
-        break
-    mark = input("Enter course mark: ")
-    if mark == "":
-        break
-    id = input("Enter student id: ")
-    if id == "":
-        break
+def addCourse(code, mark, id):
     c.execute("INSERT INTO courses VALUES(?, ?, ?)", (code, mark, id))
 
-#create student grades table
-c.execute(
-    "CREATE TABLE stu_avg(id INT, avg REAL)"
-)
+#thanks to Stack Overflow
+def is_number(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+
+def is_id(s):
+    s = int(s)
+    for row in c.execute("SELECT id FROM students"):
+        if s == row[0]:
+            return True
+    return False
+
+#add one course to table
+def inputCourse():
+    code = input("Enter course code: ")
+    while ("'" in code or code == ""):
+        #handles single quote exception
+        code = input("Please enter a valid course code without single quotes: ")
+
+    mark = input("Enter course mark: ")
+    while (not is_number(mark)):
+        #handles nonnumber exception
+        mark = input("Please enter a valid number: ")
+
+    id = input("Enter student id: ")
+    while (not is_number(id) or not is_id(id)):
+        id = input("Please enter a valid id: ")
+
+    addCourse(code, mark, id)
 
 #calculate average mark after grouping results by id
-c.execute("""
+def calcAvg():
+    c.execute("""
             SELECT name, students.id, avg(mark)
             FROM students, courses
             WHERE students.id = courses.id
             GROUP BY students.id
             """)
-rows = c.fetchall()
-for row in rows:
-    #print statement used to display each student's name, id, and avg
-    print(("{}, {}: {}").format(row[0], row[1], row[2]))
-    c.execute("INSERT INTO stu_avg VALUES(?, ?)", (row[1], row[2]))
+    rows = c.fetchall()
+    for row in rows:
+        #print statement used to display each student's name, id, and avg
+        print(("{}, {}: {}").format(row[0], row[1], row[2]))
+        c.execute("INSERT INTO stu_avg VALUES(?, ?)", (row[1], row[2]))
+
+create_tbl("students", "name TEXT NOT NULL, age INT NOT NULL, id INT PRIMARY KEY NOT NULL")
+create_tbl("courses", "code TEXT NOT NULL, mark INT NOT NULL,id INT NOT NULL")
+insertAll("students", "students.csv")
+insertAll("courses", "courses.csv")
+inputCourse()
+create_tbl("stu_avg", "id INT, avg REAL")
+calcAvg()
 
 #==========================================================
 
