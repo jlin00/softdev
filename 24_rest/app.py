@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    u = urllib2.urlopen("https://api.nasa.gov/planetary/earth/imagery/?lon=-74.011146&lat=40.71139&cloud_score=0&api_key=tcePwmse95ZYuZ2kBWPenl6klaR3BCoKWm86eehP")
+    u = urllib2.urlopen("https://api.nasa.gov/planetary/apod?api_key=tcePwmse95ZYuZ2kBWPenl6klaR3BCoKWm86eehP")
     response = u.read()
     data = json.loads(response)
 
@@ -22,7 +22,7 @@ def root():
     #response = http.request('GET', url)
     #data = json.loads(response.data)
 
-    return render_template("index.html", pic=data['url'])
+    return render_template("index.html", pic=data['url'], desc=data['explanation'])
 
 if __name__ == "__main__":
     app.debug = True
