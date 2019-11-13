@@ -10,10 +10,15 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    u = urllib2.urlopen("https://api.nasa.gov/planetary/apod?api_key=tcePwmse95ZYuZ2kBWPenl6klaR3BCoKWm86eehP")
+    return render_template("main.html")
+
+@app.route("/darksky")
+def darksky():
+    url = "https://api.darksky.net/forecast/28b607f4a70a742bd83b0931b1590466/42.3601,-71.0589"
+    u = urllib2.urlopen(url)
     response = u.read()
     data = json.loads(response)
-    return render_template("index.html", pic=data['url'], desc=data['explanation'])
+    return render_template("darksky.html",lat=data['latitude'], long=data['longitude'], timezone=data['timezone'], time=data['currently']['time'], sum=data['currently']['summary'])
 
 if __name__ == "__main__":
     app.debug = True
