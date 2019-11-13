@@ -18,7 +18,7 @@ def darksky():
     u = urllib2.urlopen(url)
     response = u.read()
     data = json.loads(response)
-    return render_template("darksky.html",lat=data['latitude'], long=data['longitude'], timezone=data['timezone'], time=data['currently']['time'], sum=data['currently']['summary'])
+    return render_template("darksky.html",lat=data['latitude'],long=data['longitude'],timezone=data['timezone'],time=data['currently']['time'],sum=data['currently']['summary'])
 
 @app.route("/omdb")
 def omdb():
@@ -27,6 +27,15 @@ def omdb():
     response = u.read()
     data = json.loads(response)
     return render_template("omdb.html",title=data['Title'],year=data['Year'],runtime=data['Runtime'],dir=data['Director'],plot=data['Plot'])
+
+@app.route("/countries")
+def countries():
+    url = "https://restcountries.eu/rest/v2/alpha/col?fields=name;capital;region;population;latlng;flag"
+    u = urllib2.urlopen(url)
+    response = u.read()
+    data = json.loads(response)
+    return render_template("countries.html", name=data['name'],cor=data['latlng'],region=data['region'],capital=data['capital'],pop=data['population'],flag=data['flag'])
+
 
 
 if __name__ == "__main__":
