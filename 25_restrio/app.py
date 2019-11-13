@@ -20,6 +20,15 @@ def darksky():
     data = json.loads(response)
     return render_template("darksky.html",lat=data['latitude'], long=data['longitude'], timezone=data['timezone'], time=data['currently']['time'], sum=data['currently']['summary'])
 
+@app.route("/omdb")
+def omdb():
+    url = "http://www.omdbapi.com/?t=handmaiden&apikey=bb27b700"
+    u = urllib2.urlopen(url)
+    response = u.read()
+    data = json.loads(response)
+    return render_template("omdb.html",title=data['Title'],year=data['Year'],runtime=data['Runtime'],dir=data['Director'],plot=data['Plot'])
+
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
