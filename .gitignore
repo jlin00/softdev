@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 starter.py
+softdev-p00
+SoftDevP0
+.gitignore
 
 # C extensions
 *.so
