@@ -6,9 +6,9 @@
 // console.log("this is a test");
 
 //function for factorial
-var fact = function(n) {
+var factorial = function(n) {
   if (n < 2) return 1;
-  return fact(n - 1) * n;
+  return factorial(n - 1) * n;
 };
 
 //function for fibonacci
@@ -32,3 +32,6 @@ var randomStudent = function() {
   var index = parseInt(Math.random() * test.length);
   return test[index];
 };
+
+var fact = document.getElementById('fact');
+fact.addEventListener("click", factorial(5));
