@@ -1,5 +1,11 @@
+//Jackie Lin and Amanda Zheng (Team DJAJ)
+//SoftDev1 pd1
+//K#29 -- Sequential Progression III
+//2019-12-12
+
 var changeHeading = function(e) {
   var h = document.getElementById("h");
+  //console.log(e.srcElement.innerHTML);
   h.innerHTML = e.srcElement.innerHTML;
 };
 
@@ -36,23 +42,19 @@ var addItem = function(e) {
 
 var button = document.getElementById("b");
 button.addEventListener('click', addItem);
-var fibarray = [0,1,1];
-var fib = function(n){
-    if (fibarray[n]){
-      return fibarray[n];
-    }
-    fibarray.push(fibarray[n-1] + fibarray[n-2]);
-    console.log (fibarray);
-    return fibarray[n];
+
+var fib = function(n) {
+  if (n < 2){
+    return 1;
+  }
+  else {
+    return fib(n-1) + fib(n-2);
+  }
 };
 
 var addFib = function(e) {
-  countfib++;
-  var fiblist=document.getElementById("fiblist");
-  var item = document.createElement("li");
-  var calculate=fib(countfib);
-  item.innerHTML = calculate;
-  fiblist.appendChild(item);
+  //console.log(e);
+  ///???
 };
 
 var fib2 = function(n) {
@@ -61,7 +63,7 @@ var fib2 = function(n) {
 }
 
 var addFib2 = function(e) {
-  console.log(e);
+  //console.log(e);
   var fiblist = document.getElementById("fiblist");
   var n = fiblist.getElementsByTagName("li").length;
   //console.log(fib2(2));
@@ -70,6 +72,5 @@ var addFib2 = function(e) {
   fiblist.appendChild(item);
 };
 
-var countfib=0;
 var fb = document.getElementById("fb");
 fb.addEventListener("click", addFib);
