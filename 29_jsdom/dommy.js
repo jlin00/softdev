@@ -5,7 +5,6 @@
 
 var changeHeading = function(e) {
   var h = document.getElementById("h");
-  //console.log(e.srcElement.innerHTML);
   h.innerHTML = e.srcElement.innerHTML;
 };
 
@@ -24,7 +23,7 @@ var addEvents = function(element) {
 }
 
 var lis = document.getElementsByTagName("li");
-console.log(lis);
+//console.log(lis);
 
 for (var i=0; i < lis.length; i++){
   addEvents(lis[i]);
@@ -44,26 +43,12 @@ var button = document.getElementById("b");
 button.addEventListener('click', addItem);
 
 var fib = function(n) {
-  if (n < 2){
-    return 1;
-  }
-  else {
-    return fib(n-1) + fib(n-2);
-  }
-};
-
-var addFib = function(e) {
-  //console.log(e);
-  ///???
-};
-
-var fib2 = function(n) {
   if (n < 2) return 1;
   return fib(n - 1) + fib(n - 2);
 }
 
-var addFib2 = function(e) {
-  //console.log(e);
+var addFib = function(e) {
+  console.log(e);
   var fiblist = document.getElementById("fiblist");
   var n = fiblist.getElementsByTagName("li").length;
   //console.log(fib2(2));
@@ -72,5 +57,26 @@ var addFib2 = function(e) {
   fiblist.appendChild(item);
 };
 
+var countfib = 0;
+var fibarray2 = [0, 1, 1];
+
+var fib2 = function(n){
+    if (fibarray[n]){
+      return fibarray[n];
+    }
+    fibarray.push(fibarray[n-1] + fibarray[n-2]);
+    //console.log(fibarray);
+    return fibarray[n];
+};
+
+var addFib2 = function(e) {
+  countfib++;
+  var fiblist=document.getElementById("fiblist");
+  var item = document.createElement("li");
+  var calculate=fib(countfib);
+  item.innerHTML = calculate;
+  fiblist.appendChild(item);
+};
+
 var fb = document.getElementById("fb");
-fb.addEventListener("click", addFib);
+fb.addEventListener("click", addFib2);
