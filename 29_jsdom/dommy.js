@@ -1,6 +1,5 @@
 var changeHeading = function(e) {
   var h = document.getElementById("h");
-  //console.log(e.srcElement.innerHTML);
   h.innerHTML = e.srcElement.innerHTML;
 };
 
@@ -29,19 +28,25 @@ var addItem = function(e) {
 
 var button = document.getElementById("b");
 button.addEventListener('click', addItem);
-
-var fib = function(n) {
-  if (n < 2){
-    return 1;
-  }
-  else {
-    return fib(n-1) + fib(n-2);
-  }
+var fibarray = [0,1,1];
+var fib = function(n){
+    if(n==0){
+      return 0;
+    }
+    if (fibarray[n]){
+      return fibarray[n];
+    }
+    fibarray[n] = fib(n-1) + fib(n-2);
+    return fibarray[n];
 };
 
 var addFib = function(e) {
   console.log(e);
-  ///???
+  fibarray.push(fib(fibarray.length+1));
+  var fiblist=document.getElementById("fiblist");
+  var item = document.createElement("li");
+  document.body.insertAfter(fiblist,item);
+  item.innerHTML = fibarray[fibarray.length-1];
 };
 
 var addFib2 = function(e) {
