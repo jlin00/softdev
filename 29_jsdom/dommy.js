@@ -23,7 +23,6 @@ var addEvents = function(element) {
 }
 
 var lis = document.getElementsByTagName("li");
-//console.log(lis);
 
 for (var i=0; i < lis.length; i++){
   addEvents(lis[i]);
@@ -35,23 +34,24 @@ var addItem = function(e) {
   item.innerHTML = "WORD";
   addEvents(item);
   list.appendChild(item);
-  lis = document.getElementsByTagName("li");
-  //console.log(lis);
 };
 
 var button = document.getElementById("b");
 button.addEventListener('click', addItem);
 
 var fib = function(n) {
-  if (n < 2) return 1;
-  return fib(n - 1) + fib(n - 2);
-}
+  if (n < 2) {
+    return 1;
+  }
+  else {
+    return fib(n - 1) + fib(n - 2);
+  }
+};
 
 var addFib = function(e) {
-  console.log(e);
+  //console.log(e);
   var fiblist = document.getElementById("fiblist");
   var n = fiblist.getElementsByTagName("li").length;
-  //console.log(fib(2));
   var item = document.createElement("li");
   item.innerHTML = fib(n);
   fiblist.appendChild(item);
@@ -65,7 +65,6 @@ var fib2 = function(n){
     return fibarray[n];
   }
   fibarray.push(fibarray[n-1] + fibarray[n-2]);
-  //console.log(fibarray);
   return fibarray[n];
 };
 
