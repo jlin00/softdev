@@ -55,10 +55,19 @@ var addFib = function(e) {
   fiblist.appendChild(item);
 };
 
+var fib2 = function(n) {
+  if (n < 2) return 1;
+  return fib(n - 1) + fib(n - 2);
+}
+
 var addFib2 = function(e) {
   console.log(e);
-  ///???
-  //DYNAMIC PROGRAMMING
+  var fiblist = document.getElementById("fiblist");
+  var n = fiblist.getElementsByTagName("li").length;
+  //console.log(fib2(2));
+  var item = document.createElement("li");
+  item.innerHTML = fib2(n);
+  fiblist.appendChild(item);
 };
 
 var countfib=0;
