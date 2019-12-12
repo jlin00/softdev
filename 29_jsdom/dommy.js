@@ -7,23 +7,31 @@ var removeItem = function(e) {
   e.srcElement.remove();
 };
 
-var lis = document.getElementsByTagName("li");
-
-for (var i=0; i < lis.length; i++){
-  lis[i].addEventListener('mouseover', changeHeading);
-  console.log(i);
-  lis[i].addEventListener('mouseout', () => {
+//helper function for adding event listeners to a list item
+var addEvents = function(element) {
+  element.addEventListener('mouseover', changeHeading);
+  element.addEventListener('mouseout', () => {
     var h = document.getElementById("h");
     h.innerHTML = "Hello World!";
   });
-  lis[i].addEventListener('click', removeItem);
+  element.addEventListener('click', removeItem);
+}
+
+var lis = document.getElementsByTagName("li");
+console.log(lis);
+
+for (var i=0; i < lis.length; i++){
+  addEvents(lis[i]);
 }
 
 var addItem = function(e) {
-  //var list = ???;
+  var list = document.getElementById("thelist");
   var item = document.createElement("li");
-  //??? = "WORD";
-  //list.???(item);
+  item.innerHTML = "WORD";
+  addEvents(item);
+  list.appendChild(item);
+  lis = document.getElementsByTagName("li");
+  //console.log(lis);
 };
 
 var button = document.getElementById("b");
