@@ -71,23 +71,6 @@ var addFib2 = function(e) {
   item.innerHTML = fib2(n);
   fiblist.appendChild(item);
 };
-var fibarray = [0,1,1];
-var fib = function(n){
-    if (fibarray[n]){
-      return fibarray[n];
-    }
-    fibarray.push(fibarray[n-1] + fibarray[n-2]);
-    console.log (fibarray);
-    return fibarray[n];
-};
-var addFib = function(e) {
-  countfib++;
-  var fiblist=document.getElementById("fiblist");
-  var item = document.createElement("li");
-  var calculate=fib(countfib);
-  item.innerHTML = calculate;
-  fiblist.appendChild(item);
-};
 
 var fb = document.getElementById("fb");
 fb.addEventListener("click", addFib);
