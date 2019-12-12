@@ -38,23 +38,21 @@ var button = document.getElementById("b");
 button.addEventListener('click', addItem);
 var fibarray = [0,1,1];
 var fib = function(n){
-    if(n==0){
-      return 0;
-    }
     if (fibarray[n]){
       return fibarray[n];
     }
-    fibarray[n] = fib(n-1) + fib(n-2);
+    fibarray.push(fibarray[n-1] + fibarray[n-2]);
+    console.log (fibarray);
     return fibarray[n];
 };
 
 var addFib = function(e) {
-  console.log(e);
-  fibarray.push(fib(fibarray.length+1));
+  countfib++;
   var fiblist=document.getElementById("fiblist");
   var item = document.createElement("li");
-  document.body.insertAfter(fiblist,item);
-  item.innerHTML = fibarray[fibarray.length-1];
+  var calculate=fib(countfib);
+  item.innerHTML = calculate;
+  fiblist.appendChild(item);
 };
 
 var addFib2 = function(e) {
@@ -63,5 +61,6 @@ var addFib2 = function(e) {
   //DYNAMIC PROGRAMMING
 };
 
+var countfib=0;
 var fb = document.getElementById("fb");
 fb.addEventListener("click", addFib);
