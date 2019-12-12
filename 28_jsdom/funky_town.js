@@ -36,30 +36,40 @@ var randomStudent = function() {
 var inputHTML = document.getElementById("input");
 var outputHTML = document.getElementById("output");
 
+var click = function(id) {
+  if (id == "fact"){
+    text = "fact(5)";
+    ans = fact(5);
+  }
+  else if (id == "fib"){
+    text = "fib(5)"
+    ans = fib(5);
+  }
+  else if (id == "gcd"){
+    text = "gcd(36, 84)"
+    ans = gcd(36, 84);
+  }
+  else {
+    text = "randomStudent() from [" + test + "]";
+    ans = randomStudent();
+  }
+  inputHTML.innerHTML = text;
+  outputHTML.innerHTML = ans;
+  console.log(ans);
+};
+
 document.getElementById("fact").addEventListener("click", function() {
-    inputHTML.innerHTML = "fact(5)"
-    var ans = fact(5);
-    outputHTML.innerHTML = ans;
-    console.log(ans);
+    click("fact");
 });
 
 document.getElementById("fib").addEventListener("click", function() {
-  inputHTML.innerHTML = "fib(5)"
-  var ans = fib(5);
-  outputHTML.innerHTML = ans;
-  console.log(ans);
+  click("fib");
 });
 
 document.getElementById("gcd").addEventListener("click", function() {
-  inputHTML.innerHTML = "gcd(36, 84)"
-  var ans = gcd(36, 84);
-  outputHTML.innerHTML = ans;
-  console.log(ans);
+  click("gcd");
 });
 
 document.getElementById("rand").addEventListener("click", function() {
-  inputHTML.innerHTML = "randomStudent() from [" + test + "]";
-  var ans = randomStudent();
-  outputHTML.innerHTML = ans;
-  console.log(ans);
+  click("rand");
 });
