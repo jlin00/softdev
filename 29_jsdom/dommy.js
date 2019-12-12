@@ -51,14 +51,14 @@ var addFib = function(e) {
   console.log(e);
   var fiblist = document.getElementById("fiblist");
   var n = fiblist.getElementsByTagName("li").length;
-  //console.log(fib2(2));
+  //console.log(fib(2));
   var item = document.createElement("li");
-  item.innerHTML = fib2(n);
+  item.innerHTML = fib(n);
   fiblist.appendChild(item);
 };
 
 var countfib = 0;
-var fibarray2 = [0, 1, 1];
+var fibarray = [0, 1, 1];
 
 var fib2 = function(n){
     if (fibarray[n]){
