@@ -1,14 +1,14 @@
-//Jackie Lin and Tiffany Cao (Team Couch Potatoes)
+//Jackie Lin and Yifan Wang (Team HydroFlask)
 //SoftDev1 pd1
-//K#27 -- Sequential Progression
-//2019-12-10
+//K#28 -- Sequential Progression
+//2019-12-11
 
 // console.log("this is a test");
 
 //function for factorial
-var factorial = function(n) {
+var fact = function(n) {
   if (n < 2) return 1;
-  return factorial(n - 1) * n;
+  return fact(n - 1) * n;
 };
 
 //function for fibonacci
@@ -33,5 +33,33 @@ var randomStudent = function() {
   return test[index];
 };
 
-var fact = document.getElementById('fact');
-fact.addEventListener("click", factorial(5));
+var inputHTML = document.getElementById("input");
+var outputHTML = document.getElementById("output");
+
+document.getElementById("fact").addEventListener("click", function() {
+    inputHTML.innerHTML = "fact(5)"
+    var ans = fact(5);
+    outputHTML.innerHTML = ans;
+    console.log(ans);
+});
+
+document.getElementById("fib").addEventListener("click", function() {
+  inputHTML.innerHTML = "fib(5)"
+  var ans = fib(5);
+  outputHTML.innerHTML = ans;
+  console.log(ans);
+});
+
+document.getElementById("gcd").addEventListener("click", function() {
+  inputHTML.innerHTML = "gcd(36, 84)"
+  var ans = gcd(36, 84);
+  outputHTML.innerHTML = ans;
+  console.log(ans);
+});
+
+document.getElementById("rand").addEventListener("click", function() {
+  inputHTML.innerHTML = "randomStudent() from [" + test + "]";
+  var ans = randomStudent();
+  outputHTML.innerHTML = ans;
+  console.log(ans);
+});
