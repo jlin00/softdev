@@ -9,7 +9,6 @@ SoftDevP0
 hydroflasksksk
 apacheflask
 .gitignore
-bashcrawl
 
 # C extensions
 *.so
