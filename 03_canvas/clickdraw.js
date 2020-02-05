@@ -26,8 +26,17 @@ var toggle = function(){
 }
 
 c.addEventListener('mousedown', e => {
-  ctx.fillRect(e.clientX, e.clientY, 50, 50);
-  console.log("drawing");
+  var x = e.pageX - c.offsetLeft;
+  var y = e.pageY - c.offsetTop;
+  if (mode == 1){
+    ctx.fillRect(x, y, 20, 20);
+  }
+  else {
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fill();
+  }
 });
 
 var clearbtn = document.getElementById("clear");
