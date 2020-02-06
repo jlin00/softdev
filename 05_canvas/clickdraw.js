@@ -1,4 +1,4 @@
-//Jackie Lin and Devin Lin (Team )
+//Jackie Lin and Devin Lin (Team Rocchio)
 //SoftDev1 pd1
 //K#05 -- Canvas
 //2020-02-05
