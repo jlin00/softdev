@@ -1,7 +1,7 @@
 //Jackie Lin and Devin Lin (Team Rocchio)
 //SoftDev1 pd1
 //K#05 -- Canvas
-//2020-02-05
+//2020-02-06
 
 var c = document.getElementById("slate");
 var ctx = c.getContext("2d");
