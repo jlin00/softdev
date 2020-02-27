@@ -72,7 +72,7 @@ while (not zip.isnumeric() or int(zip) < 7005 or int(zip) > 11697):
     zip = input("Please enter a valid zipcode: ")
 number = input("Please enter the maximum number of results you want to return: ")
 while (not number.isnumeric() or int(number) <= 0):
-    number = input("Please enter a number greater than zero: ")
+    number = input("Please enter an integer greater than zero: ")
 for rest in find_num_zip(zip, int(number)):
     for key, value in rest.items():
         if key == "name":
