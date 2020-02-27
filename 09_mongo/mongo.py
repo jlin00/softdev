@@ -21,7 +21,7 @@ if (restaurants.count() == 0):
 def find_borough(borough):
     '''All restaurants in a specified borough'''
     print("------------FINDING ALL RESTAURANTS IN BOROUGH: %s------------", borough)
-    return restaurants.find({"borough" : borough}, {"_id":0; "name":1})
+    return restaurants.find({"borough" : borough}, {"_id":0, "name":1})
 
 def find_zipcode(zipcode):
     '''All restaurants in a specified zip code'''
