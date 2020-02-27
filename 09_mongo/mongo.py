@@ -68,14 +68,14 @@ for rest in find_zip_score("10019", 4):
 
 print("------------FINDING N RESTAURANTS IN GIVEN ZIPCODE------------")
 zip = input("Please enter a zipcode: \n")
-while (zip == ""):
-    print("Please enter a non-empty string!")
+while (!zip.isNumeric() || int(zip) / 10000 < 1):
+    print("Please enter a valid zipcode!")
     zip = input("Please enter a zipcode: \n")
 number = input("Please enter the maximum number of results you want to return: \n")
-while (number == ""):
-    print("Please enter a non-empty string!")
-    number = input("Please enter a zipcode: \n")
-for rest in find_num_zip(zip, number):
+while (!number.isNumeric():
+    print("Please enter a valid  number!")
+    number = input("Please enter the maximum number of results you want to return: \n")
+for rest in find_num_zip(zip, int(number)):
     for key, value in rest.items():
         if key == "name":
             print("{name: %s}" % value)
