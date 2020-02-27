@@ -36,7 +36,7 @@ def find_zip_score(zipcode, score):
 
 for rest in find_borough("Brooklyn"):
     print("------------FINDING ALL RESTAURANTS IN BROOKLYN ------------")
-    for key, value in dict(rest):
+    for key, value in rest.items():
         if key == name:
             print("{name: %s}" % value)
     #print(rest)
