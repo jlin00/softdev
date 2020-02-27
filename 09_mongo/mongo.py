@@ -20,8 +20,7 @@ if (restaurants.count() == 0):
 
 def find_borough(borough):
     '''All restaurants in a specified borough'''
-    print("------------FINDING ALL RESTAURANTS IN BOROUGH: %s------------", borough)
-    return restaurants.find({"borough" : borough}, {"_id":0, "name":1})
+    return restaurants.find({"borough" : borough})
 
 def find_zipcode(zipcode):
     '''All restaurants in a specified zip code'''
@@ -36,7 +35,11 @@ def find_zip_score(zipcode, score):
     return restaurants.find({"address.zipcode": zipcode, "grades.score" : {"$lt" : score}})
 
 for rest in find_borough("Brooklyn"):
-    print(rest)
+    print("------------FINDING ALL RESTAURANTS IN BOROUGH: %s------------" % borough)
+    for key, value in rest:
+        if key == name:
+            print("{name: %s}" % value)
+    #print(rest)
 
 # for rest in find_zipcode("11225"):
 #     print(rest)
