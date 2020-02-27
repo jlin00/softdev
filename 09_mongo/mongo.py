@@ -36,7 +36,7 @@ def find_zip_score(zipcode, score):
 
 def find_num_zip(zipcode, number):
     '''Returns specified number of restaurants in given zip code.'''
-    return restaurants.find({"address.zipcode": zipcode}, number)
+    return restaurants.find({"address.zipcode": zipcode}).limit(number)
 
 print("------------FINDING ALL RESTAURANTS IN BROOKLYN------------")
 for rest in find_borough("Brooklyn"):
@@ -72,7 +72,7 @@ while (not zip.isnumeric() or int(zip) / 10000 < 1):
     print("Please enter a valid zipcode!")
     zip = input("Please enter a zipcode: \n")
 number = input("Please enter the maximum number of results you want to return: \n")
-while (not number.isnumeric()):
+while (not number.isnumeric() or int(number) < 0):
     print("Please enter a valid  number!")
     number = input("Please enter the maximum number of results you want to return: \n")
 for rest in find_num_zip(zip, int(number)):
