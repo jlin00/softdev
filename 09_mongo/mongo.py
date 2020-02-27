@@ -9,12 +9,13 @@ from pymongo import MongoClient
 
 client = MongoClient()
 db = client.test
-db.restaurants.drop()
 restaurants = db.restaurants
-file = open("primer-dataset.json", "r")
-content = file.readlines()
-for line in content:
-    restaurants.insert_one(loads(line))
+if (restaurants.count() == 0) {
+    file = open("primer-dataset.json", "r")
+    content = file.readlines()
+    for line in content:
+        restaurants.insert_one(loads(line))
+}
 #for item in restaurants.find({}):
 #    print(item)
 
