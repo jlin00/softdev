@@ -43,14 +43,9 @@ for rest in find_borough("Brooklyn"):
 
 print("------------FINDING ALL RESTAURANTS IN 11225------------")
 for rest in find_zipcode("11225"):
-    name = ""
-    id = ""
     for key, value in rest.items():
         if key == "name":
-            name = value
-        if key == "restaurant_id":
-            id = value;
-        print("{name: %s, restaurant_id: %s}" % (value, id))
+            print("{name: %s}" % value)
     #print(rest)
 
 print("------------FINDING ALL RESTAURANTS IN 10462 with Grade A------------")
