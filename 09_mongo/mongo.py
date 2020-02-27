@@ -34,18 +34,35 @@ def find_zip_score(zipcode, score):
     '''All restaurants in a specified zip code with a score below a specified threshold.'''
     return restaurants.find({"address.zipcode": zipcode, "grades.score" : {"$lt" : score}})
 
-print("------------FINDING ALL RESTAURANTS IN BROOKLYN ------------")
+print("------------FINDING ALL RESTAURANTS IN BROOKLYN------------")
 for rest in find_borough("Brooklyn"):
     for key, value in rest.items():
         if key == "name":
             print("{name: %s}" % value)
     #print(rest)
 
-# for rest in find_zipcode("11225"):
-#     print(rest)
-#
-# for rest in find_zip_grade("10462", "A"):
-#     print(rest)
-#
-# for rest in find_zip_score("10019", 4):
-#     print(rest)
+print("------------FINDING ALL RESTAURANTS IN 11225------------")
+for rest in find_zipcode("11225"):
+    name = ""
+    id = ""
+    for key, value in rest.items():
+        if key == "name":
+            name = value
+        if key == "restaurant_id":
+            id = value;
+        print("{name: %s, restaurant_id: %s}" % (value, id))
+    #print(rest)
+
+print("------------FINDING ALL RESTAURANTS IN 10462 with Grade A------------")
+for rest in find_zip_grade("10462", "A"):
+    for key, value in rest.items():
+        if key == "name":
+            print("{name: %s}" % value)
+    #print(rest)
+
+print("------------FINDING ALL RESTAURANTS IN 10019 with Score < 4------------")
+for rest in find_zip_score("10019", 4):
+    for key, value in rest.items():
+        if key == "name":
+            print("{name: %s}" % value)
+    #print(rest)
