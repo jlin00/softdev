@@ -35,7 +35,7 @@ def find_zip_score(zipcode, score):
     return restaurants.find({"address.zipcode": zipcode, "grades.score" : {"$lt" : score}})
 
 for rest in find_borough("Brooklyn"):
-    print("------------FINDING ALL RESTAURANTS IN BOROUGH: %s------------" % borough)
+    print("------------FINDING ALL RESTAURANTS IN BROOKLYN ------------")
     for key, value in rest:
         if key == name:
             print("{name: %s}" % value)
