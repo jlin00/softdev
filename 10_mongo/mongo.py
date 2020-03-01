@@ -27,8 +27,8 @@ if (events.count() == 0):
 def display_categories():
     category_one = set()
     for item in events.find({}, {'_id': 0, 'category1': 1}):
-        if item is not None:
-            item = dict(item)
+        item = dict(item)
+        if item:
             value = item.get('category1').lower()
             if "by" in value:
                 category_one.add(value)
