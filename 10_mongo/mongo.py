@@ -25,7 +25,9 @@ if (events.count() == 0):
 #     print(item)
 
 def display_categories():
+    dict = {}
     for item in events.find({}, {'_id': 0, 'category1': 1}):
-        print(item)
+        dict[item] = "1"
+    print(dict)
 
 display_categories()
