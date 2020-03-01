@@ -11,9 +11,15 @@ db = client.test
 events = db.events
 if (events.count() == 0):
     with open('dataset.json') as file:
-        data = json.load(file)
-        for event in data['results']:
-            events.insert_one(event)
+        data = file.read() #convert file to str
+        data = data[30:-3] #clean up file
+        data = data.split("\"event\": ") #list of events
+        data.pop(0) #empty entry
+        for item in data:
+            if item[-1] == ' ':
+                item = item[0:-2] #formatting JSON object
+            item = json.loads(item) #load object
+            events.insert_one(item) #insert into database
 
 for item in events.find({}).limit(20):
     print(item)
