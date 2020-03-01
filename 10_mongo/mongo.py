@@ -25,10 +25,13 @@ if (events.count() == 0):
 #     print(item)
 
 def display_categories():
-    test = set()
+    category_one = set()
     for item in events.find({}, {'_id': 0, 'category1': 1}):
         item = dict(item)
-        test.add(item.get('category1'))
+        value = item.get('category1').lower()
+        if "by" in value:
+            category_one.add(value)
+    
     print(test)
 
 display_categories()
