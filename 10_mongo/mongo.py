@@ -25,7 +25,7 @@ if (events.count() == 0):
 #     print(item)
 
 def display_categories():
-    for item in events.find({'category1': 'By place'}, {'_id': 0, 'category2': 1}):
+    for item in events.find({'category1': 'By topic'}, {'_id': 0, 'category2': 1}):
         print(item)
 
 display_categories()
