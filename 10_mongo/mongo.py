@@ -7,7 +7,7 @@ import json
 from pymongo import MongoClient
 
 client = MongoClient()
-db = client.test
+db = client.croissants
 events = db.events
 if (events.count() == 0):
     with open('dataset.json') as file:
