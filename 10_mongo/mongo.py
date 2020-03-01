@@ -28,7 +28,7 @@ def display_categories():
     test = set()
     for item in events.find({}, {'_id': 0, 'category1': 1}):
         item = dict(item)
-        print(item.get('category1'))
+        test.add(item.get('category1'))
     print(test)
 
 display_categories()
