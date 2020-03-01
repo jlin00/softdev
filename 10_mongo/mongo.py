@@ -21,5 +21,11 @@ if (events.count() == 0):
             item = json.loads(item) #load object
             events.insert_one(item) #insert into database
 
-for item in events.find({}).limit(20):
-    print(item)
+# for item in events.find({}).limit(20):
+#     print(item)
+
+def display_categories():
+    for item in events.find({}, {'_id': 0, 'category1': 1}):
+        print(item)
+
+display_categories()
