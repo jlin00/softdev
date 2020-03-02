@@ -36,6 +36,18 @@ def display_categories():
 
 display_categories()
 
+def display_locations():
+    places = set()
+    for item in events.find($or: [{'category1': 'by place'}, {'category1': 'by places'}, {'category1': 'by area'}, {'category1': 'by region'}, {'category1': 'by location'}], {'_id': 0, 'category2': 1}):
+        item = dict(item)
+        if item:
+            value = item.get('category2').lower()
+            if "by" in value:
+                places.add(value)
+    print(places)
+
+display_locations()
+
 def get_by_place():
     print("HELLO WORLD")
 
