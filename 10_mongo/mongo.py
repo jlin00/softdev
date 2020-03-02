@@ -29,7 +29,7 @@ def display_categories():
     for item in events.find({}, {'_id': 0, 'category1': 1}):
         item = dict(item)
         if item:
-            value = item.get('category1')
+            value = item.get('category1').lower()
             if "by" in value:
                 category_one.add(value)
     print(category_one)
@@ -42,8 +42,7 @@ def display_locations():
         item = dict(item)
         if item:
             value = item.get('category2').lower()
-            if "by" in value:
-                places.add(value)
+            places.add(value)
     print(places)
 
 display_locations()
