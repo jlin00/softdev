@@ -35,3 +35,18 @@ def display_categories():
     print(category_one)
 
 display_categories()
+
+def get_by_place():
+    print("HELLO WORLD")
+
+def get_by_year():
+    print("HELLO WORLD")
+
+def get_by_topic():
+    print("HELLO WORLD")
+
+def get_by_keyword():
+    print("HELLO WORLD")
+
+def input_timeline():
+    print("HELLO WORLD")
