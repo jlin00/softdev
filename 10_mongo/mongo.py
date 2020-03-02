@@ -29,7 +29,7 @@ def display_categories():
     for item in events.find({}, {'_id': 0, 'category1': 1}):
         item = dict(item)
         if item:
-            value = item.get('category1').lower()
+            value = item.get('category1')
             if "by" in value:
                 category_one.add(value)
     print(category_one)
