@@ -39,3 +39,6 @@ def get_by_keyword():
 
 def input_timeline():
     print("HELLO WORLD")
+
+for item in get_by_topic("Astronomy"):
+    print(item)
