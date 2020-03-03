@@ -32,7 +32,8 @@ def get_by_year():
 
 def get_by_topic(topic):
     '''Returns all events that fall under a certain topic'''
-    return events.find({"category2": topic}, {"_id": 0, "date": 1, "description": 1})
+    query = {"category2":{"$regex":topic, "$options": "i"}}
+    return events.find(query, {"_id": 0, "date": 1, "description": 1})
 
 def get_by_keyword():
     print("HELLO WORLD")
@@ -40,5 +41,5 @@ def get_by_keyword():
 def input_timeline():
     print("HELLO WORLD")
 
-for item in get_by_topic("Astronomy"):
+for item in get_by_topic("astronomy"):
     print(item)
