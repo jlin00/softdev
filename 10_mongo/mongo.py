@@ -32,7 +32,7 @@ def get_by_year():
 
 def get_by_topic(topic):
     '''Returns all events that fall under a certain topic'''
-    return restaurants.find({"category2": topic}, {"_id": 0, "date": 1, "description": 1})
+    return events.find({"category2": topic}, {"_id": 0, "date": 1, "description": 1})
 
 def get_by_keyword():
     print("HELLO WORLD")
