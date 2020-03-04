@@ -58,4 +58,4 @@ def input_timeline():
 
 get_by_place("Egypt")
 get_by_year(2000)
-get_by_topic("astronomy")
+get_by_topic("arts")
