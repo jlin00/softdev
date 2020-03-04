@@ -24,16 +24,30 @@ if (events.count() == 0):
 # for item in events.find({}).limit(20):
 #     print(item)
 
-def get_by_place():
-    print("HELLO WORLD")
+def get_by_place(location):
+    results = events.find({"category2" : location})
+    print ("Place: {}".format(location))
+    print()
+    for x in results:
+       print("Place:"  + x["category2"] + "\nEvent:" + x["description"])
 
-def get_by_year():
-    print("HELLO WORLD")
+def get_by_year(year):
+    results = events.find({ "date": {'$regex' : str(year)} })
+    print("Date: {}".format(year))
+    print("Results Found: {}".format(results.count()))
+    print()
+    for x in results:
+      print("Date:" + x["date"] + "\nEvent:" + x["description"])
 
 def get_by_topic(topic):
     '''Returns all events that fall under a certain topic'''
     query = {"category2":{"$regex":topic, "$options": "i"}}
-    return events.find(query, {"_id": 0, "date": 1, "description": 1})
+    results = events.find(query, {"_id": 0, "date": 1, "description": 1})
+    print("Topic: {}".format(topic))
+    print("Results Found: {}".format(results.count()))
+    print()
+    for x in results:
+      print("Date:" + x["date"] + "\nEvent:" + x["description"])
 
 def get_by_keyword():
     print("HELLO WORLD")
@@ -41,5 +55,6 @@ def get_by_keyword():
 def input_timeline():
     print("HELLO WORLD")
 
-for item in get_by_topic("astronomy"):
-    print(item)
+get_by_place("Egypt")
+get_by_year(2000)
+get_by_topic("astronomy")
