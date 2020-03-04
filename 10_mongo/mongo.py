@@ -41,13 +41,13 @@ def get_by_year(year):
 
 def get_by_topic(topic):
     '''Returns all events that fall under a certain topic'''
-    query = {"category2":{"$regex":topic, "$options": "i"}}
+    query = {"category2":{"$regex":"(?i)\\btopic\\b", "$options": "i"}}
     results = events.find(query, {"_id": 0, "date": 1, "description": 1})
     print("Topic: {}".format(topic))
     print("Results Found: {}".format(results.count()))
     print()
     for x in results:
-      print("Date:" + x["date"] + "\nEvent:" + x["description"])
+      print("Topic:" + x["category2"] + "\nEvent:" + x["description"])
 
 def get_by_keyword():
     print("HELLO WORLD")
