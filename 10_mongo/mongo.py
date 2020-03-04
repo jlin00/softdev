@@ -1,4 +1,4 @@
-#Kenneth Chin, Jackie Lin
+#Kenneth Chin, Jackie Lin (Team Croissants)
 #SoftDev1 pd1
 #K10 -- Import/Export Bank
 #2020-03-04
@@ -21,41 +21,50 @@ if (events.count() == 0):
             item = json.loads(item) #load object
             events.insert_one(item) #insert into database
 
-# for item in events.find({}).limit(20):
-#     print(item)
-
 def get_by_place(location):
+    '''Returns all events that happened in a certain region'''
     results = events.find({"category2" : location})
     print ("Place: {}".format(location))
     print()
     for x in results:
        print("Place:"  + x["category2"] + "\nEvent:" + x["description"])
+       print()
 
 def get_by_year(year):
+    '''Returns all events that happened in a certain year'''
     results = events.find({ "date": {'$regex' : str(year)} })
     print("Date: {}".format(year))
     print("Results Found: {}".format(results.count()))
     print()
     for x in results:
       print("Date:" + x["date"] + "\nEvent:" + x["description"])
+      print()
 
 def get_by_topic(topic):
     '''Returns all events that fall under a certain topic'''
     regex = "(\w*%s\w*)" % topic
     query = {"category2":{"$regex": regex, "$options": "i"}}
-    results = events.find(query, {"_id": 0, "date": 1, "description": 1})
+    results = events.find(query)
     print("Topic: {}".format(topic))
     print("Results Found: {}".format(results.count()))
     print()
     for x in results:
+      print("Topic:" + x["category2"] + "\nEvent:" + x["description"])
+      print()
+
+def get_by_keyword(keyword):
+    '''Returns all events with given keyword in their description'''
+    regex = "(\w*%s\w*)" % keyword
+    query = {"category2":{"$regex": regex, "$options": "i"}}
+    results = events.find(query)
+    print("Keyword: {}".format(keyword))
+    print("Results Found: {}".format(results.count()))
+    print()
+    for x in results:
       print("Date:" + x["date"] + "\nEvent:" + x["description"])
-
-def get_by_keyword():
-    print("HELLO WORLD")
-
-def input_timeline():
-    print("HELLO WORLD")
+      print()
 
 get_by_place("Egypt")
 get_by_year(2000)
 get_by_topic("arts")
+get_by_keyword("Ovid")
