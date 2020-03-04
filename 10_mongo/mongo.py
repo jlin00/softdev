@@ -55,7 +55,7 @@ def get_by_topic(topic):
 def get_by_keyword(keyword):
     '''Returns all events with given keyword in their description'''
     regex = "(\w*%s\w*)" % keyword
-    query = {"category2":{"$regex": regex, "$options": "i"}}
+    query = {"description":{"$regex": regex, "$options": "i"}}
     results = events.find(query)
     print("Keyword: {}".format(keyword))
     print("Results Found: {}".format(results.count()))
