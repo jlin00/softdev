@@ -48,7 +48,7 @@ def get_by_topic(topic):
     print("Results Found: {}".format(results.count()))
     print()
     for x in results:
-      print("Date:" + x["date"] + "\nEvent:" + x["description"])
+      print("Topic:" + x["category2"] + "\nEvent:" + x["description"])
 
 def get_by_keyword():
     print("HELLO WORLD")
