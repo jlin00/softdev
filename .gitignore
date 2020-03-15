@@ -8,6 +8,7 @@ softdev-p01
 SoftDevP0
 hydroflasksksk
 apacheflask
+pandas
 .gitignore
 
 # C extensions
