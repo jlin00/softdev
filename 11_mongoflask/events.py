@@ -18,7 +18,9 @@ from pymongo import MongoClient
 client = MongoClient()
 db = client.croissants
 events = db.events
-if (events.count() == 0):
+
+def create_events():
+    events.drop()
     with open('dataset.json') as file:
         data = file.read() #convert file to str
         data = data[30:-3] #clean up file
