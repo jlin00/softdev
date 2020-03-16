@@ -2,7 +2,7 @@
 
 {% block body %}
 <form action="/history">
-  Find all events from place:
+  Find all events from place: (capitalization matters!)
   <input class="form-control" type="text" name="place">
   <input class="btn btn-dark" type="submit" name="submit">
 </form>
@@ -26,7 +26,7 @@
   <input class="form-control" type="text" name="topic">
   <input class="btn btn-dark" type="submit" name="submit">
 </form>
-{% for item in place %}
+{% for item in topic %}
   <b>Description: </b> {{item['description']}}
   <br><br>
 {% endfor %}
@@ -36,7 +36,7 @@
   <input class="form-control" type="text" name="keyword">
   <input class="btn btn-dark" type="submit" name="submit">
 </form>
-{% for item in place %}
+{% for item in keyword %}
   <b>Description: </b> {{item['description']}}
   <br><br>
 {% endfor %}
