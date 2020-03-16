@@ -10,7 +10,7 @@
   <b>Description: </b> {{item['description']}}
   <br><br>
 {% endfor %}
-
+<br>
 <form action="/history">
   Find all events from year:
   <input class="form-control" type="number" name="year" max="2020">
@@ -20,7 +20,7 @@
   <b>Description: </b> {{item['description']}}
   <br><br>
 {% endfor %}
-
+<br>
 <form action="/history">
   Find all events from topic:
   <input class="form-control" type="text" name="topic">
@@ -30,7 +30,7 @@
   <b>Description: </b> {{item['description']}}
   <br><br>
 {% endfor %}
-
+<br>
 <form action="/history">
   Find all events from keyword:
   <input class="form-control" type="text" name="keyword">
@@ -40,5 +40,5 @@
   <b>Description: </b> {{item['description']}}
   <br><br>
 {% endfor %}
-
+<br>
 {% endblock %}
