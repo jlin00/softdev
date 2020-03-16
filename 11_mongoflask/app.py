@@ -17,7 +17,7 @@ def home():
 @app.route("/history")
 def history():
     place = ""
-    year = 2020
+    year = ""
     topic = ""
     keyword = ""
     if "place" in request.args:
