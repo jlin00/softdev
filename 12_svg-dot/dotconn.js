@@ -8,7 +8,11 @@ var prevX = -1;
 var prevY = -1;
 
 var clear = function(){
-
+  while (pic.firstChild){
+    pic.removeChild(pic.firstChild);
+  }
+  prevX = -1;
+  prevY = -1;
 }
 
 var clearbtn = document.getElementById("clear");
