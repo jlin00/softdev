@@ -10,6 +10,7 @@ hydroflasksksk
 apacheflask
 pandas
 .gitignore
+12_test
 
 # C extensions
 *.so
