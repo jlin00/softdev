@@ -11,6 +11,7 @@ apacheflask
 pandas
 .gitignore
 12_test
+jlin00.github.io
 
 # C extensions
 *.so
