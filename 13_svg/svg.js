@@ -1,7 +1,7 @@
 //Jackie Lin and Yifan Wang (Team Ketchup Packets)
 //SoftDev1 pd1
-//K#12 -- Connect the Dots
-//2020-03-30
+//K#13 -- Change || Die
+//2020-03-31
 
 var pic = document.getElementById("vimage");
 
