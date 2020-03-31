@@ -61,7 +61,13 @@ var changespeed = function(){
     var cx = parseInt(circle.getAttribute("cx"));
     var cy = parseInt(circle.getAttribute("cy"));
     var inc_x = Math.floor(Math.random() * 10 - 5);
+    while (inc_x == 0){
+      inc_x = Math.floor(Math.random() * 10 - 5);
+    }
     var inc_y = Math.floor(Math.random() * 10 - 5);
+    while (inc_y == 0){
+      inc_y = Math.floor(Math.random() * 10 - 5);
+    }
     circle.setAttribute("inc_x", inc_x);
     circle.setAttribute("inc_y", inc_y);
     circle.setAttribute("cx", cx + inc_x);
