@@ -13,6 +13,8 @@ var clear = function(){
   while (pic.firstChild){
     pic.removeChild(pic.firstChild);
   }
+  window.cancelAnimationFrame(id);
+  id = 0;
 }
 
 var move = function(){
