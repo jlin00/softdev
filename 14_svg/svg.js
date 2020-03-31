@@ -18,8 +18,6 @@ var clear = function(){
 var move = function(){
   window.cancelAnimationFrame(id);
   id = 0;
-  inc_x = 1;
-  inc_y = 1;
   id = window.requestAnimationFrame(float);
 }
 
@@ -51,7 +49,25 @@ var float = function(e){
 }
 
 var xtra = function(){
+  window.cancelAnimationFrame(id);
+  id = window.requestAnimationFrame(changespeed);
+}
 
+var changespeed = function(){
+  for (i = 0; i < pic.children.length; i++){
+    var circle = pic.children[i];
+    var cx = parseInt(circle.getAttribute("cx"));
+    var cy = parseInt(circle.getAttribute("cy"));
+    var inc_x = Math.floor(Math.random() * 10 - 5);
+    var inc_y = Math.floor(Math.random() * 10 - 5);
+    circle.setAttribute("inc_x", inc_x);
+    circle.setAttribute("inc_y", inc_y);
+    circle.setAttribute("cx", cx + inc_x);
+    circle.setAttribute("cy", cy + inc_y);
+  }
+  if (id != 0) {
+    id = window.requestAnimationFrame(float);
+  }
 }
 
 var createcircle = function(e){
