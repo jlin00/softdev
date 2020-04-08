@@ -64,6 +64,20 @@ SoftDev1 pd1
     barEnter.text(function(d) { return d; });
   -------------------------------->
 
+  <!--------------------------------
+  Mimicking Transition Code:
+
+  //fade background to black
+  d3.select("body").transition()
+    .style("background-color", "black");
+
+  //resize circles with a staggered delay
+  d3.selectAll("circle").transition()
+    .duration(750)
+    .delay(function(d, i) { return i * 10; })
+    .attr("r", function(d) { return Math.sqrt(d * scale); });
+  -------------------------------->
+
   <!--
   Our Interpretation:
   - data first creates a list of values
